@@ -1,6 +1,7 @@
 import React, { useState, useReducer, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import JobList from './JobList';
 
 const BASE_URL = "https://api.ziprecruiter.com/jobs/v1";
 console.log('env: ', process.env)
@@ -14,15 +15,19 @@ async function zipFetch (city: string, search: string) {
 interface AppState {
   city: string;
   search: string;
+  jobList: Array<any>;
 }
 
 const App: React.FC = () => {
-  const [appState, setState] = useState({city: 'portland', search: 'python'} as AppState);
-  const {city, search} = appState;
+  const [appState, setState] = useState({city: 'portland', search: 'python', jobList: []} as AppState);
+  const {city, search, jobList} = appState;
   useEffect(() => {
-    zipFetch(city, search).then((val) => console.log(val))
-      .then(out => console.log('out: ', out));
-  });
+    zipFetch(city, search)
+      .then((out: any) => {
+        console.log(out);
+        setState({...appState, jobList: out.jobs})
+      });
+  }, []);
 
   function onSubmit (e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -45,6 +50,7 @@ const App: React.FC = () => {
         <input name="search" type="text" value={search} onChange={onSearchChange} placeholder="job keywords"/>
         <button type="submit">submit</button>
       </form>
+      <JobList jobs={jobList} />
     </div>
   );
 }
