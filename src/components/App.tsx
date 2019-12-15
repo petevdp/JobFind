@@ -44,12 +44,24 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <form onSubmit={onSubmit}>
-        <input name="city" type="text" value={city} onChange={onCityChange} placeholder="City"/>
-        <input name="search" type="text" value={search} onChange={onSearchChange} placeholder="job keywords"/>
-        <button type="submit">submit</button>
-      </form>
-      <JobList jobs={jobList} />
+      <nav id="top-bar" className="title">
+        <h1 id="app-title">JobFind</h1>
+      </nav>
+      <div className="content-container">
+        <div className="search-container">
+          <h3 className="usage-prompt">Time to look for a job!</h3>
+          <form id="search-form" onSubmit={onSubmit}>
+            <label className="city-label">City</label>
+            <input name="city" type="text" value={city} onChange={onCityChange} placeholder="City"/>
+            <label className="keywords-label">Keywords</label>
+            <input name="keywords" type="text" value={search} onChange={onSearchChange} placeholder="job keywords"/>
+            <div className="button-row">
+              <button type="submit">submit</button>
+            </div>
+          </form>
+        <JobList jobs={jobList} />
+        </div>
+      </div>
     </div>
   );
 }
