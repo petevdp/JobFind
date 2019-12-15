@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d1a8b694e8ab10620fdc6a67ebe59fea",
+    "revision": "935f7bd2289a93ef7dbd78c097fa3c36",
     "url": "/JobFind/index.html"
   },
   {
-    "revision": "4506473600418b5fecc4",
+    "revision": "e4c7725a3af3d77c3d67",
     "url": "/JobFind/static/css/main.ccca2896.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/JobFind/static/js/2.3a096142.chunk.js.LICENSE"
   },
   {
-    "revision": "4506473600418b5fecc4",
-    "url": "/JobFind/static/js/main.894693f0.chunk.js"
+    "revision": "e4c7725a3af3d77c3d67",
+    "url": "/JobFind/static/js/main.d2e997a1.chunk.js"
   },
   {
     "revision": "97d5462783865e682c1b",
