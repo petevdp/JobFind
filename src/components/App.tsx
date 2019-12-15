@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useEffect } from "react";
+import React, { useState, } from "react";
 import "../styles/App.scss";
 import JobList from "./JobList";
 
@@ -12,7 +12,7 @@ async function zipFetch(location: string, search: string) {
       `?api_key=${REACT_APP_ZIP_RECRUITER_API_KEY}&location=${location}&search=${search}`
   );
   console.log(fullUrl);
-  return (await fetch(fullUrl, {})).json();
+  return (await fetch(fullUrl, { mode: 'cors'})).json();
 }
 
 type searchStatus = 'noSearches' | 'notFound' | 'success'
