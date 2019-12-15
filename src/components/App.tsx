@@ -6,22 +6,23 @@ const BASE_URL = "https://api.ziprecruiter.com/jobs/v1";
 console.log('env: ', process.env)
 const { REACT_APP_ZIP_RECRUITER_API_KEY } = process.env;
 
-async function zipFetch (city: string, search: string) {
-  const fullUrl = encodeURI(BASE_URL + `?api_key=${REACT_APP_ZIP_RECRUITER_API_KEY}&city=${city}&search=${search}`);
+async function zipFetch (location: string, search: string) {
+  const fullUrl = encodeURI(BASE_URL + `?api_key=${REACT_APP_ZIP_RECRUITER_API_KEY}&location=${location}&search=${search}`);
+  console.log(fullUrl);
   return (await fetch(fullUrl, {})).json();
 };
 
 interface AppState {
-  city: string;
+  location: string;
   search: string;
   jobList: Array<any>;
 }
 
 const App: React.FC = () => {
-  const [appState, setState] = useState({city: 'portland', search: 'python', jobList: []} as AppState);
-  const {city, search, jobList} = appState;
+  const [appState, setState] = useState({location: 'portland', search: 'python', jobList: []} as AppState);
+  const {location, search, jobList} = appState;
   useEffect(() => {
-    zipFetch(city, search)
+    zipFetch(location, search)
       .then((out: any) => {
         console.log(out);
         setState({...appState, jobList: out.jobs})
@@ -30,16 +31,21 @@ const App: React.FC = () => {
 
   function onSubmit (e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // const out = zipFetch(city, search)
-    // console.log(out);
+    console.log( 'submitting');
+
+    zipFetch(location, search)
+      .then((data: any) => {
+        console.log('data: ', data);
+        setState({...appState, jobList: data.jobs})
+      });
   };
 
   function onSearchChange (e: React.ChangeEvent<HTMLInputElement>) {
     setState({...appState, search: e.target.value});
   }
 
-  function onCityChange (e: React.ChangeEvent<HTMLInputElement>) {
-    setState({...appState, city: e.target.value});
+  function onlocationChange (e: React.ChangeEvent<HTMLInputElement>) {
+    setState({...appState, location: e.target.value});
   }
 
   return (
@@ -51,12 +57,12 @@ const App: React.FC = () => {
         <div className="search-container">
           <h3 className="usage-prompt">Time to look for a job!</h3>
           <form id="search-form" onSubmit={onSubmit}>
-            <label className="city-label">City</label>
-            <input name="city" type="text" value={city} onChange={onCityChange} placeholder="City"/>
+            <label className="location-label">location</label>
+            <input name="location" type="text" value={location} onChange={onlocationChange} placeholder="location"/>
             <label className="keywords-label">Keywords</label>
             <input name="keywords" type="text" value={search} onChange={onSearchChange} placeholder="job keywords"/>
             <div className="button-row">
-              <button type="submit">submit</button>
+              <input type="submit"/>
             </div>
           </form>
         <JobList jobs={jobList} />

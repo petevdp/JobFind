@@ -47,12 +47,12 @@
   display: grid;
   width: 100%;
   grid-template-areas:
-    "city-label keywords-label ."
-    "city-input keywords-input submit";
+    "location-label keywords-label ."
+    "location-input keywords-input submit";
 
   width: 80%;
-  input[name="city"] {
-    grid-area: city-input;
+  input[name="location"] {
+    grid-area: location-input;
     height: 2vh;
   }
 
@@ -64,8 +64,8 @@
     color: $color5;
   }
 
-  .city-label {
-    grid-area: city-label;
+  .location-label {
+    grid-area: location-label;
   }
 
   .keywords-label {

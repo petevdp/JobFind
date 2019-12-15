@@ -16,7 +16,7 @@ mvp: make one ip request based on user input, and return the results as a table?
 ### MVP
 
 * the user should be able to
-  * search for jobs based on keywords and their particular city
+  * search for jobs based on keywords and their particular location
   * see those jobs displayed, get basic info, and visit the full posting via link
 
 * page should be mobile-friendly
@@ -51,7 +51,7 @@ mvp: make one ip request based on user input, and return the results as a table?
   {
     buyer_type: "job_board"
     category: "",
-    city: "",
+    location: "",
     country: "us",
     has_non_zr_url: "1",
     has_zipapply: false,
