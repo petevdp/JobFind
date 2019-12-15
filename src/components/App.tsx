@@ -21,13 +21,13 @@ interface AppState {
 const App: React.FC = () => {
   const [appState, setState] = useState({location: 'portland', search: 'python', jobList: []} as AppState);
   const {location, search, jobList} = appState;
-  useEffect(() => {
-    zipFetch(location, search)
-      .then((out: any) => {
-        console.log(out);
-        setState({...appState, jobList: out.jobs})
-      });
-  }, []);
+  // useEffect(() => {
+  //   zipFetch(location, search)
+  //     .then((out: any) => {
+  //       console.log(out);
+  //       setState({...appState, jobList: out.jobs})
+  //     });
+  // });
 
   function onSubmit (e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
