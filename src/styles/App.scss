@@ -122,7 +122,7 @@
     "hiring-company location url"
     "collapsible collapsible collapsible";
   margin: 0;
-  grid-template-columns: auto auto min-content;
+  grid-template-columns: 1.2fr max-content max-content;
   margin-top: 0.3em;
   padding: 0.5em;
   background-color: white;
@@ -131,10 +131,12 @@
   .title {
     grid-area: title;
     font-weight: bold;
+    padding-right: .5em;
   }
 
   .hiring-company {
     grid-area: hiring-company;
+    padding-right: .5em;
   }
 
   .location {
@@ -176,9 +178,13 @@
     .description-heading {
       grid-area: description-heading;
       margin-top: 0;
+      font-weight: darker;
     }
     .snippet {
       grid-area: snippet;
+      b {
+        color: $color1;
+      }
     }
     .salary-container {
       grid-area: salary-container;

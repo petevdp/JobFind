@@ -9,6 +9,8 @@ mvp: make one ip request based on user input, and return the results as a table?
 * form styling (pass 1)
 * nav styling (pass 1)
 * add link to full posting
+* add salary range to expanded job posting
+* format salary
 
 ### TODO
 * pagination
@@ -17,7 +19,6 @@ mvp: make one ip request based on user input, and return the results as a table?
 * better styling for job postings
   * glowy effect on job postings when hovering
   * indication that the job postings can be expanded
-* add salary range to expanded job posting
 * react router
   * search terms
   * pagination

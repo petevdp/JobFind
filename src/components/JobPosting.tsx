@@ -7,19 +7,15 @@ interface JobPostingProps {
   job: job;
 }
 
-/**
-- primary
-  name
-  hiring_company
-  location,
-  posted_time_friendly
-  url
-
-- secondary - click on the entry and you will get more info
-  snippet
-  salary
-  source
-*/
+function formatSalary (salary: number) {
+  // regex is too hard
+  const strSalary = salary.toString();
+  const chunks = [];
+  for (let i=0; i < strSalary.length; i += 3) {
+    chunks.push(strSalary.slice(i, i + 3));
+  }
+  return chunks.join(',');
+}
 
 const JobPosting: React.FC<React.PropsWithChildren<JobPostingProps>> = ({
   job
@@ -61,12 +57,12 @@ const JobPosting: React.FC<React.PropsWithChildren<JobPostingProps>> = ({
             />
             <section className="salary-container">
               <div className="salary-min">
-                <label className="label">Min Salary</label>
-                <span className="value">{salary_min_annual}</span>
+                <label className="label">Min Salary:</label>
+                <span className="value">${formatSalary(salary_min_annual)}</span>
               </div>
               <div className="salay-max">
-                <label className="label">Max Salary</label>
-                <span className="value">{salary_max_annual}</span>
+                <label className="label">Max Salary:</label>
+                <span className="value">${formatSalary(salary_max_annual)}</span>
               </div>
             </section>
           </div>
