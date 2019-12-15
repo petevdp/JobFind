@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "petevdp.github.io/job-find/static/css/main.ccca2896.chunk.css",
-    "main.js": "petevdp.github.io/job-find/static/js/main.fb5141b7.chunk.js",
-    "main.js.map": "petevdp.github.io/job-find/static/js/main.fb5141b7.chunk.js.map",
-    "runtime-main.js": "petevdp.github.io/job-find/static/js/runtime-main.f50fce5d.js",
-    "runtime-main.js.map": "petevdp.github.io/job-find/static/js/runtime-main.f50fce5d.js.map",
-    "static/js/2.dd1d3223.chunk.js": "petevdp.github.io/job-find/static/js/2.dd1d3223.chunk.js",
-    "static/js/2.dd1d3223.chunk.js.map": "petevdp.github.io/job-find/static/js/2.dd1d3223.chunk.js.map",
-    "index.html": "petevdp.github.io/job-find/index.html",
-    "precache-manifest.2cc3e2e3a01cb408e0e67785c1d2cba3.js": "petevdp.github.io/job-find/precache-manifest.2cc3e2e3a01cb408e0e67785c1d2cba3.js",
-    "service-worker.js": "petevdp.github.io/job-find/service-worker.js",
-    "static/css/main.ccca2896.chunk.css.map": "petevdp.github.io/job-find/static/css/main.ccca2896.chunk.css.map",
-    "static/js/2.dd1d3223.chunk.js.LICENSE": "petevdp.github.io/job-find/static/js/2.dd1d3223.chunk.js.LICENSE"
+    "main.css": "/job-find/static/css/main.ccca2896.chunk.css",
+    "main.js": "/job-find/static/js/main.dc812d54.chunk.js",
+    "main.js.map": "/job-find/static/js/main.dc812d54.chunk.js.map",
+    "runtime-main.js": "/job-find/static/js/runtime-main.bf28ed84.js",
+    "runtime-main.js.map": "/job-find/static/js/runtime-main.bf28ed84.js.map",
+    "static/js/2.dd1d3223.chunk.js": "/job-find/static/js/2.dd1d3223.chunk.js",
+    "static/js/2.dd1d3223.chunk.js.map": "/job-find/static/js/2.dd1d3223.chunk.js.map",
+    "index.html": "/job-find/index.html",
+    "precache-manifest.ecfe31402337a4bf42d0efcce8cfb818.js": "/job-find/precache-manifest.ecfe31402337a4bf42d0efcce8cfb818.js",
+    "service-worker.js": "/job-find/service-worker.js",
+    "static/css/main.ccca2896.chunk.css.map": "/job-find/static/css/main.ccca2896.chunk.css.map",
+    "static/js/2.dd1d3223.chunk.js.LICENSE": "/job-find/static/js/2.dd1d3223.chunk.js.LICENSE"
   },
   "entrypoints": [
-    "static/js/runtime-main.f50fce5d.js",
+    "static/js/runtime-main.bf28ed84.js",
     "static/js/2.dd1d3223.chunk.js",
     "static/css/main.ccca2896.chunk.css",
-    "static/js/main.fb5141b7.chunk.js"
+    "static/js/main.dc812d54.chunk.js"
   ]
 }
