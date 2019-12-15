@@ -22,20 +22,14 @@ const keysToCompare = [
 const compareJobElements = (a: any, b: any) => {
   for (let keyToCompare of keysToCompare) {
       let aHasKey = a[keyToCompare] !== "";
-      let bHasKey = b[keyToCompare] !== "";
-      console.log('ahas: ', aHasKey);
-      console.log('bhas: ', bHasKey);
       if (aHasKey === bHasKey) {
         continue;
       } else if (aHasKey && !bHasKey) {
-        console.log("a: ", b[keyToCompare]);
         return -1;
       } else {
-        console.log("b: ", b[keyToCompare]);
         return 1
       }
   }
-  console.log('return 0');
   return 0;
 }
 

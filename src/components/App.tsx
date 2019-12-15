@@ -3,7 +3,6 @@ import "../styles/App.scss";
 import JobList from "./JobList";
 
 const BASE_URL = "https://api.ziprecruiter.com/jobs/v1";
-console.log("env: ", process.env);
 const { REACT_APP_ZIP_RECRUITER_API_KEY } = process.env;
 
 async function zipFetch(location: string, search: string) {
@@ -11,7 +10,6 @@ async function zipFetch(location: string, search: string) {
     BASE_URL +
       `?api_key=${REACT_APP_ZIP_RECRUITER_API_KEY}&location=${location}&search=${search}`
   );
-  console.log(fullUrl);
   return (await fetch(fullUrl, { mode: 'cors'})).json();
 }
 
@@ -34,10 +32,8 @@ const App: React.FC = () => {
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log("submitting");
 
     zipFetch(location, search).then((data: any) => {
-      console.log("data: ", data);
       setState({ ...appState, jobList: data.jobs, searchStatus: data.jobs.length > 0 ? 'success' : 'notFound' });
     });
   }

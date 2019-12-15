@@ -31,7 +31,6 @@ const JobPosting: React.FC<React.PropsWithChildren<JobPostingProps>> = ({
     salary_min_annual
   } = job;
   function onUrlClick(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
-    console.log("stopping prop");
     e.nativeEvent.stopPropagation();
     e.stopPropagation();
   }
