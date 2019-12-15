@@ -10,4 +10,6 @@ export interface job {
     location: "us";
     snippet: string;
     url: string;
+    salary_max_annual: number;
+    salary_min_annual: number;
 };

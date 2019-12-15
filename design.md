@@ -17,6 +17,10 @@ mvp: make one ip request based on user input, and return the results as a table?
 * better styling for job postings
   * glowy effect on job postings when hovering
   * indication that the job postings can be expanded
+* add salary range to expanded job posting
+* react router
+  * search terms
+  * pagination
 
 ### MVP
 
@@ -25,6 +29,8 @@ mvp: make one ip request based on user input, and return the results as a table?
   * see those jobs displayed first, get basic info, and visit the full posting via link
 
 * page should be mobile-friendly
+
+* deploy to github pages
 
 
 
