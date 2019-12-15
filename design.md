@@ -4,18 +4,30 @@ mvp: make one ip request based on user input, and return the results as a table?
 ## Tasks
 ### DONE
 * get basic api request working
+* display posting from search
+* basic styling for postings
 
 ### TODO
 * decide how to structure the resulting data for consumption
+* add link to full posting
+* nav styling
+* form styling
+
+### MVP
+
+* the user should be able to
+  * search for jobs based on keywords and their particular city
+  * see those jobs displayed, get basic info, and visit the full posting via link
+
+* page should be mobile-friendly
+
+
 
 ### STRECH
 * unit testing
-* advanced search features
-* incremental searc
-
-
-### Output Structure
-MVP is just a set of barebones tables
+* advanced search features(needs more definition)
+* incremental search by getting all postings returned based on location
+* use location api to filter postings to a particular area by default
 
 
 ### which fields to display
