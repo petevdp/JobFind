@@ -57,7 +57,7 @@ const App: React.FC = () => {
         <div className="search-container">
           <h3 className="usage-prompt">Time to look for a job!</h3>
           <form id="search-form" onSubmit={onSubmit}>
-            <label className="location-label">location</label>
+            <label className="location-label">Location</label>
             <input name="location" type="text" value={location} onChange={onlocationChange} placeholder="location"/>
             <label className="keywords-label">Keywords</label>
             <input name="keywords" type="text" value={search} onChange={onSearchChange} placeholder="job keywords"/>

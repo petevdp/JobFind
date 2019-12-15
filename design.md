@@ -11,8 +11,12 @@ mvp: make one ip request based on user input, and return the results as a table?
 * add link to full posting
 
 ### TODO
-* decide how to structure the resulting data for consumption
-* better media queries
+* pagination
+* fix media queries
+* highlight location and search terms
+* better styling for job postings
+  * glowy effect on job postings when hovering
+  * indication that the job postings can be expanded
 
 ### MVP
 
@@ -45,4 +49,10 @@ mvp: make one ip request based on user input, and return the results as a table?
   salary
   source
 
-How much client side sorting could I do?
+problem * the api will look for keywords in the snippet to potentially determine location. This means sorting by the provided location properties won't help us sort the entries.
+
+I'm going to rely entirely on the api doing the sorting and just provide a bunch of search functionality based on it. This means no incremental searching unfortunately, but I could get a list of locations/keywords and use that potentially for autocompletion
+
+
+
+

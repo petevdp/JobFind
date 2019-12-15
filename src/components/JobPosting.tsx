@@ -40,9 +40,10 @@ const JobPosting: React.FC<React.PropsWithChildren<JobPostingProps>> = ({job}) =
           <span className="location">{location}</span>
           <span className="posted-time">{posted_time_friendly}</span>
           <div className="url-container">
-            <a className="url" href={url} onClick={onUrlClick}><img src={zipRecruiterLogo} width={30} height={30}/></a>
+            <a className="url" href={url} onClick={onUrlClick}><img src={zipRecruiterLogo} alt="url" width={30} height={30}/></a>
           </div>
           <div className="collapsible" ref={setCollapsibleElement}>
+            <h4 className="description-heading">Description</h4>
             <section className="snippet" dangerouslySetInnerHTML={{__html: snippet}}/>
           </div>
         </section>

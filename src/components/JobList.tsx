@@ -15,6 +15,9 @@ const keysToCompare = [
  * determines which element should go first in a list
  * a and b passed as any to allow keysToCompare values
  * to not raise typeerrors
+ *
+ *
+ * unused right now, doing only server side sorting
 */
 const compareJobElements = (a: any, b: any) => {
   for (let keyToCompare of keysToCompare) {
@@ -42,8 +45,6 @@ interface JobListProps {
 
 const JobList: React.FC<React.PropsWithChildren<JobListProps>> = ({jobs}) => {
   const jobElements = jobs
-    .sort(compareJobElements)
-    // .map((j) => {console.log(j); return j})
     .map(job => <li key={job.id}><JobPosting job={job}/></li>);
 
   return (
