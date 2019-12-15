@@ -1,0 +1,29 @@
+@import './palette.scss';
+
+.job-posting {
+  display: grid;
+  grid-template-areas:
+    "title posted-time"
+    "hiring-company location";
+  margin: .3em;
+  padding: .5em;
+  background-color: #f3f3f3;
+
+  .title {
+    grid-area: title;
+  }
+
+  .hiring-company {
+    grid-area: hiring-company;
+  }
+
+  .location {
+    grid-area: location;
+    text-align: right;
+  }
+
+  .posted-time {
+    grid-area: posted-time;
+    text-align: right;
+  }
+}

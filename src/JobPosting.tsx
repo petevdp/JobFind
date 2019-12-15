@@ -21,12 +21,13 @@ interface JobPostingProps {
 */
 
 const JobPosting: React.FC<React.PropsWithChildren<JobPostingProps>> = ({job}) => {
-  const { name, } = job;
+  const { name, hiring_company, location, posted_time_friendly} = job;
   return (
     <section className="job-posting">
       <span className="title">{name}</span>
-      <span className="hiring-company"> </span>
-      <span className="location"> </span>
+      <span className="hiring-company">{hiring_company.name}</span>
+      <span className="location">{location}</span>
+      <span className="posted-time">{posted_time_friendly}</span>
     </section>
   )
 }

@@ -1,6 +1,5 @@
 import React, { useState, useReducer, useEffect } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 import JobList from './JobList';
 
 const BASE_URL = "https://api.ziprecruiter.com/jobs/v1";
