@@ -1,4 +1,14 @@
 import React from "react";
+import "fomantic-ui-css/semantic.css";
+import {
+  Menu,
+  Container,
+  Form,
+  FormTextArea,
+  Label,
+  Input,
+  Button
+} from "semantic-ui-react";
 import { useJobSearch, searchFields } from "../jobSearch";
 import queryString from "query-string";
 import SlideToggle from "react-slide-toggle";
@@ -52,71 +62,64 @@ const Search: React.FC<React.PropsWithChildren<SearchProps>> = () => {
     <SlideToggle
       collapsed={true}
       render={({ toggle, setCollapsibleElement }: any) => (
-        <div className="search-container">
+        <Container className="search-container">
           {statusMessageMap[status]()}
-          <form id="search-form" onSubmit={onSubmit}>
-            <label className="location-label">Location</label>
-            <label className="keywords-label">Keywords</label>
-            <input
+          <Form id="search-form" onSubmit={onSubmit}>
+            <Form.Field lable="Search Terms">
+              <label className="keywords-label">Keywords</label>
+              <Form.Input
+                name="keywords"
+                value={userFields.search}
+                onChange={e => onFieldChange(e.target.value, "search")}
+                placeholder={defaultFields.search}
+              />
+            </Form.Field>
+            <Form.Field
+              label="Location"
+              control={Input}
+              onChange={(_: any, { value }: any) =>
+                onFieldChange(value, "location")
+              }
               name="location"
-              type="text"
-              value={userFields.location}
-              onChange={e => onFieldChange(e.target.value, "location")}
-              placeholder={defaultFields.location}
             />
-            <input
-              name="keywords"
-              value={userFields.search}
-              onChange={e => onFieldChange(e.target.value, "search")}
-              placeholder={defaultFields.search}
+            <Form.Field
+              label="Minimum Salary"
+              control={Input}
+              name="min-salary"
+              type="number"
+              value={userFields.refine_by_salary}
+              placeholder={defaultFields.refine_by_salary}
+              onChange={(e: any, { value }: any) => {
+                e.preventDefault();
+                onFieldChange(Number(e.target.value), "refine_by_salary");
+              }}
             />
-            <div className="advanced-options" ref={setCollapsibleElement}>
-              <h4 className="advance-options-title">Advanced Options</h4>
-              <label className="min-salary-label">Mininum Salary</label>
-              <input
-                name="min-salary"
-                type="number"
-                // || undefined allows field to be blank
-                value={userFields.refine_by_salary}
-                onChange={e => {
-                  e.preventDefault();
-                  onFieldChange(Number(e.target.value), "refine_by_salary");
-                }}
-              />
-              <label className="radius-label">Radius (Miles)</label>
-              <input
-                name="radius"
-                type="number"
-                value={userFields.radius_miles}
-                onChange={e => {
-                  e.preventDefault();
-                  onFieldChange(Number(e.target.value), "radius_miles");
-                }}
-              />
-              <label className="days-ago-label">Days Ago</label>
-              <input
-                name="days-ago"
-                type="number"
-                value={userFields.days_ago}
-                onChange={e => {
-                  e.preventDefault();
-                  onFieldChange(Number(e.target.value), "days_ago");
-                }}
-              />
-            </div>
-            <div className="button-row">
-              <input type="submit" />
-              <button
-                type="button"
-                className="advanced-options-btn"
-                onClick={toggle}
-              >
-                Toggle Advanced Options
-              </button>
-            </div>
-          </form>
+            <Form.Field
+              label="Radius (Miles)"
+              control={Input}
+              name="radius"
+              type="number"
+              value={userFields.radius_miles}
+              onChange={(e: any, { value }: any) => {
+                e.preventDefault();
+                onFieldChange(Number(e.target.value), "radius_miles");
+              }}
+            />
+            <Form.Field
+              label="Days Ago"
+              control={Input}
+              name="days-ago"
+              type="number"
+              value={userFields.days_ago}
+              onChange={(e: any, { value }: any) => {
+                e.preventDefault();
+                onFieldChange(Number(e.target.value), "days_ago");
+              }}
+            />
+            <Form.Field control={Button}>Submit</Form.Field>
+          </Form>
           <JobList jobList={jobList} />
-        </div>
+        </Container>
       )}
     />
   );

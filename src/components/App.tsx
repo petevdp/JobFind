@@ -1,16 +1,18 @@
 import React from "react";
-import "../styles/App.scss";
+import 'fomantic-ui-css/semantic.css';
+import { Menu, Container, } from 'semantic-ui-react';
+
 import Search from "./Search";
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <nav id="top-bar" className="title">
-        <h1 id="app-title">JobFind</h1>
-      </nav>
-      <div className="content-container">
+      <Menu>
+        <Menu.Item header >JobFind</Menu.Item>
+      </Menu>
+      <Container className="content-container">
         <Search />
-      </div>
+      </Container>
     </div>
   );
 };

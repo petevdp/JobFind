@@ -3,6 +3,7 @@ import { job } from "../types";
 import JobPosting from "./JobPosting";
 import upArrow from "../assets/keyboard_arrow_up-24px.svg";
 import downArrow from "../assets/keyboard_arrow_down-24px.svg";
+import { Table, Button } from "semantic-ui-react";
 interface JobListProps {
   jobList: Array<job>;
 }
@@ -62,11 +63,7 @@ const JobList: React.FC<React.PropsWithChildren<JobListProps>> = ({
     .sort((a, b) =>
       ((sortMap[activeOption] as unknown) as optionSort)(a, b, toggle)
     )
-    .map(job => (
-      <li key={job.id}>
-        <JobPosting job={job} />
-      </li>
-    ));
+    .map(job => <JobPosting key={job.id} job={job} />);
 
   let arrow;
   if (toggle === "min") {
@@ -77,18 +74,18 @@ const JobList: React.FC<React.PropsWithChildren<JobListProps>> = ({
   }
 
   return (
-    <section id="job-list-container">
-      <div className="list-sorting">
-        <label>Sort: </label>
-        <button onClick={() => dispatch("salary")}>
-          Salary {activeOption === "salary" && <img alt="" src={arrow} />}
-        </button>
-        <button onClick={() => dispatch("recency")}>
-          Recency {activeOption === "recency" && <img alt="" src={arrow} />}
-        </button>
-      </div>
-      <ul id="job-list">{jobElements}</ul>
-    </section>
+    <Table padded>
+      <Table.Header>
+        <Table.Row>
+          <Table.HeaderCell>Title</Table.HeaderCell>
+          <Table.HeaderCell>Company</Table.HeaderCell>
+          <Table.HeaderCell>Location</Table.HeaderCell>
+          <Table.HeaderCell>Salary</Table.HeaderCell>
+          <Table.HeaderCell>Days Ago</Table.HeaderCell>
+        </Table.Row>
+      </Table.Header>
+      <Table.Body>{jobElements}</Table.Body>
+    </Table>
   );
 };
 
