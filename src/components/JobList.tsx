@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useEffect } from 'react';
+import React, {  } from 'react';
 import { job} from './types';
 import JobPosting from './JobPosting';
 interface JobListProps {
