@@ -7,10 +7,12 @@ import { job } from "./types";
 export interface searchFields {
   location?: string;
   search?: string;
-  refine_by_salary: number;
+  refine_by_salary?: number;
+  radius_miles?: number;
+  days_ago?: number;
 }
 
-type fieldName = "search" | "location" | "refine_by_salary";
+type fieldName = "search" | "location" | "refine_by_salary" | 'days_ago' | 'radius_miles';
 
 const BASE_API_URL = "https://api.ziprecruiter.com/jobs/v1/";
 
@@ -40,13 +42,17 @@ export interface jobSearch {
 /** if query params or the user hasn't
  * provided fields they're replaced by ones included here */
 const baseFields: searchFields = {
-  refine_by_salary: 200000
+  refine_by_salary: 200000,
+  days_ago: 100
 }
 
-/** update search fields, make searches, and get output */
-export function useJobSearch(defaultFields: searchFields): jobSearch {
+/**
+ * update search fields, make searches, and get output
+ * the provided initFields will be queried by the api on mount.
+ */
+export function useJobSearch(initFields: searchFields): jobSearch {
   const [state, setState] = useState({
-    userFields: {...baseFields, ...defaultFields},
+    userFields: {...baseFields, ...initFields},
     jobList: [],
     status: "noSearches",
     setUrlParams: false
@@ -73,8 +79,9 @@ export function useJobSearch(defaultFields: searchFields): jobSearch {
   }
 
   useEffect(() => {
-    if (status === "noSearches" && !isObjEmpty(defaultFields)) {
-      zipFetch(defaultFields).then((data: any) => {
+    // if there are default
+    if (status === "noSearches" && !isObjEmpty(initFields)) {
+      zipFetch(initFields).then((data: any) => {
         setState({
           ...state,
           jobList: data.jobs,
@@ -82,7 +89,7 @@ export function useJobSearch(defaultFields: searchFields): jobSearch {
         });
       });
     }
-  }, [defaultFields, state, status]);
+  }, [initFields, state, status]);
 
   return {
     onFieldChange,

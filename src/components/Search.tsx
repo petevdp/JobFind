@@ -50,14 +50,13 @@ const Search: React.FC<React.PropsWithChildren<SearchProps>> = () => {
 
   return (
     <SlideToggle
-      collapsed={true}
+      collapsed={false} // TEMPORARY SHOULD BE TRUE
       render={({ toggle, setCollapsibleElement }: any) => (
         <div className="search-container">
           {statusMessageMap[status]()}
           <form id="search-form" onSubmit={onSubmit}>
             <label className="location-label">Location</label>
             <label className="keywords-label">Keywords</label>
-            <label className="min-salary-label">Mininum Salary</label>
             <input
               name="location"
               type="text"
@@ -71,17 +70,41 @@ const Search: React.FC<React.PropsWithChildren<SearchProps>> = () => {
               onChange={e => onFieldChange(e.target.value, "search")}
               placeholder={defaultFields.search}
             />
-            <input
-              name="min-salary"
-              type="number"
-              value={userFields ? userFields.refine_by_salary.toString() : ""}
-              onChange={e => {
-                e.preventDefault();
-                onFieldChange(Number(e.target.value), "refine_by_salary");
-              }}
-            />
             <div className="advanced-options" ref={setCollapsibleElement}>
-              Advanced Options!
+              <h4 className="advance-options-title">
+                Advanced Options
+              </h4>
+              <label className="min-salary-label">Mininum Salary</label>
+              <input
+                name="min-salary"
+                type="number"
+                // || undefined allows field to be blank
+                value={userFields.refine_by_salary}
+                onChange={e => {
+                  e.preventDefault();
+                  onFieldChange(Number(e.target.value), "refine_by_salary");
+                }}
+              />
+              <label className="min-salary-label">Radius (Miles)</label>
+              <input
+                name="radius"
+                type="number"
+                value={userFields.radius_miles}
+                onChange={e => {
+                  e.preventDefault();
+                  onFieldChange(Number(e.target.value), "radius_miles");
+                }}
+              />
+              <label className="days-ago-label">Days Ago</label>
+              <input
+                name="radius"
+                type="number"
+                value={userFields.days_ago}
+                onChange={e => {
+                  e.preventDefault();
+                  onFieldChange(Number(e.target.value), "days_ago");
+                }}
+              />
             </div>
             <div className="button-row">
               <input type="submit" />

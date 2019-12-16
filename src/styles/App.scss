@@ -52,8 +52,8 @@
   grid-template-areas:
     "keywords-label location-label min-salary-label"
     "keywords-input location-input min-salary-input"
-    "advanced-options advanced-options  advanced-options"
-    "submit submit submit";
+    "submit submit submit"
+    "advanced-options advanced-options  advanced-options";
 
   grid-template-columns: 1fr 2fr;
   column-gap: 1em;
