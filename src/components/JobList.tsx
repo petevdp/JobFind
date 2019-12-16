@@ -3,7 +3,7 @@ import { job } from "../types";
 import JobPosting from "./JobPosting";
 import upArrow from "../assets/keyboard_arrow_up-24px.svg";
 import downArrow from "../assets/keyboard_arrow_down-24px.svg";
-import { Table, Button } from "semantic-ui-react";
+import { Table, Button, ButtonProps, Icon } from "semantic-ui-react";
 interface JobListProps {
   jobList: Array<job>;
 }
@@ -17,9 +17,10 @@ type sortMap = {
 
 const sortMap: sortMap = {
   salary: (a, b, toggle) => {
-    const averageA = Math.floor(a.salary_max_annual / a.salary_min_annual);
-    const averageB = Math.floor(b.salary_max_annual / b.salary_min_annual);
-    const difference = averageA - averageB;
+    // const averageA = Math.floor(a.salary_max_annual / a.salary_min_annual);
+    // const averageB = Math.floor(b.salary_max_annual / b.salary_min_annual);
+    // const difference = averageA - averageB;
+    const difference = a.salary_min_annual - b.salary_min_annual;
     return toggle === "max" ? difference : -difference;
   },
   recency: (a, b, toggle) => {
@@ -34,6 +35,48 @@ interface sortState {
   activeOption: activeOption;
   toggle: optionToggle;
 }
+
+interface ToggleButtonProps {
+  activeOption: activeOption;
+  option: activeOption;
+  toggle: optionToggle;
+  dispatch: React.Dispatch<activeOption>;
+}
+
+type buttonNameMap = {
+  [str: string]: string | undefined;
+};
+
+const buttonNameMap: buttonNameMap = {
+  recency: "Days Ago",
+  salary: "Salary"
+};
+
+const ToggleButton: React.FC<React.PropsWithChildren<ToggleButtonProps>> = ({
+  activeOption,
+  toggle,
+  option,
+  dispatch
+}) => {
+  let iconName: 'angle up' | 'angle down' | undefined;
+  let isActive;
+  if (activeOption === option) {
+    isActive = true;
+    iconName = toggle === "min" ? "angle up" : "angle down";
+  }
+  return (
+    <Button
+      size="tiny"
+      onClick={() => dispatch(option)}
+      icon
+      labelPosition="right"
+      active={isActive}
+    >
+      {buttonNameMap[option]}
+      <Icon name={iconName}/>
+    </Button>
+  );
+};
 
 const reduce: React.Reducer<sortState, activeOption> = (
   prevState,
@@ -81,8 +124,22 @@ const JobList: React.FC<React.PropsWithChildren<JobListProps>> = ({
           <Table.HeaderCell>Company</Table.HeaderCell>
           <Table.HeaderCell>Snippet From Posting</Table.HeaderCell>
           <Table.HeaderCell>Location</Table.HeaderCell>
-          <Table.HeaderCell>Salary</Table.HeaderCell>
-          <Table.HeaderCell>Days Ago</Table.HeaderCell>
+          <Table.HeaderCell singleLine>
+            <ToggleButton
+              dispatch={dispatch}
+              option={"salary"}
+              toggle={toggle}
+              activeOption={activeOption}
+            />
+          </Table.HeaderCell>
+          <Table.HeaderCell singleLine>
+            <ToggleButton
+              dispatch={dispatch}
+              option={"recency"}
+              toggle={toggle}
+              activeOption={activeOption}
+            />
+          </Table.HeaderCell>
           <Table.HeaderCell>Link</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
