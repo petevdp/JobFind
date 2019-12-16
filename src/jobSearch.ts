@@ -1,23 +1,24 @@
 import { useState, useEffect } from "react";
 import isObjEmpty from "lodash/isEmpty";
+import queryString from 'query-string';
 import { job } from "./types";
 
+// when adding to this, update fieldNames as well
 export interface searchFields {
   location?: string;
   search?: string;
+  refine_by_salary: number;
 }
 
-type fieldName = "search" | "location";
+type fieldName = "search" | "location" | "refine_by_salary";
 
-const BASE_API_URL = "https://api.ziprecruiter.com/jobs/v1";
+const BASE_API_URL = "https://api.ziprecruiter.com/jobs/v1/";
 
 /** query the zipRecruiter api */
-async function zipFetch({ location, search }: searchFields) {
-  const fullUrl = encodeURI(
-    BASE_API_URL +
-      `?api_key=${process.env.REACT_APP_ZIP_RECRUITER_API_KEY}&location=${location}&search=${search}`
-  );
-  return (await fetch(fullUrl, { mode: "cors" })).json();
+async function zipFetch(fields: searchFields) {
+  const queryParams = {...fields, api_key: process.env.REACT_APP_ZIP_RECRUITER_API_KEY}
+  const fullUrl = BASE_API_URL + '?' + queryString.stringify(queryParams)
+  return (await fetch(fullUrl)).json();
 }
 
 type searchStatus = "noSearches" | "notFound" | "success";
@@ -39,7 +40,7 @@ export interface jobSearch {
 /** update search fields, make searches, and get output */
 export function useJobSearch(defaultFields: searchFields): jobSearch {
   const [state, setState] = useState({
-    userFields: defaultFields,
+    userFields: {...defaultFields, refine_by_salary: 100},
     jobList: [],
     status: "noSearches",
     setUrlParams: false

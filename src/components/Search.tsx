@@ -34,7 +34,7 @@ type SearchProps = {};
 
 const Search: React.FC<React.PropsWithChildren<SearchProps>> = () => {
   // eslint-disable-next-line no-restricted-globals
-  const defaultFields = queryString.parse(location.search) as searchFields;
+  const defaultFields = queryString.parse(location.search) as unknown as searchFields;
   const { jobList, userFields, onFieldChange, onSearch, status } = useJobSearch(
     defaultFields
   );
@@ -44,6 +44,8 @@ const Search: React.FC<React.PropsWithChildren<SearchProps>> = () => {
     setQueryParams(userFields);
     onSearch();
   };
+  console.log('salary: ', userFields.refine_by_salary);
+
 
   return (
     <div className="search-container">
@@ -60,10 +62,20 @@ const Search: React.FC<React.PropsWithChildren<SearchProps>> = () => {
         <label className="keywords-label">Keywords</label>
         <input
           name="keywords"
-          type="text"
           value={userFields.search}
           onChange={e => onFieldChange(e.target.value, "search")}
           placeholder={defaultFields.search}
+        />
+        <label className="min-salary-label">Mininum Salary</label>
+        <input
+          name="min-salary"
+          type="number"
+          value={userFields ? userFields.refine_by_salary.toString() : ''}
+          placeholder={"80000"}
+          onChange={e => {
+            e.preventDefault();
+            onFieldChange(Number(e.target.value), "refine_by_salary")
+          }}
         />
         <div className="button-row">
           <input type="submit" />
