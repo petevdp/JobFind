@@ -6,6 +6,7 @@ export interface job {
     name: string;
     city: string;
     hiring_company: hiringCompany;
+    posted_time: string;
     posted_time_friendly: string;
     location: "us";
     snippet: string;

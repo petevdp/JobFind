@@ -117,7 +117,7 @@ const Search: React.FC<React.PropsWithChildren<SearchProps>> = () => {
               </button>
             </div>
           </form>
-          <JobList jobs={jobList} />
+          <JobList jobList={jobList} />
         </div>
       )}
     />
