@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useEffect } from "react";
+import React, {  } from "react";
 import { job } from "./types";
 import SlideToggle from "react-slide-toggle";
 import zipRecruiterLogo from "../assets/zipRecruiterLogo.png";
@@ -31,7 +31,6 @@ const JobPosting: React.FC<React.PropsWithChildren<JobPostingProps>> = ({
     salary_min_annual
   } = job;
   function onUrlClick(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
-    console.log("stopping prop");
     e.nativeEvent.stopPropagation();
     e.stopPropagation();
   }
