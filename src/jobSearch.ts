@@ -42,7 +42,7 @@ export interface jobSearch {
 /** if query params or the user hasn't
  * provided fields they're replaced by ones included here */
 const baseFields: searchFields = {
-  refine_by_salary: 200000,
+  refine_by_salary: 100000,
   days_ago: 100
 }
 

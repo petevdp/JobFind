@@ -78,8 +78,8 @@ const JobList: React.FC<React.PropsWithChildren<JobListProps>> = ({
 
   return (
     <section id="job-list-container">
-      <label>Sort: </label>
       <div className="list-sorting">
+        <label>Sort: </label>
         <button onClick={() => dispatch("salary")}>
           Salary {activeOption === "salary" && <img alt="" src={arrow} />}
         </button>
