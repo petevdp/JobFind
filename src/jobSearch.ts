@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
-import isObjEmpty from "lodash/isEmpty";
 import queryString from "query-string";
 import { job } from "./types";
-import { setServers } from "dns";
 
 // when adding to this, update fieldNames as well
 export interface searchFields {
