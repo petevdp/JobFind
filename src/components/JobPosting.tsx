@@ -1,5 +1,5 @@
 import React, {  } from "react";
-import { job } from "./types";
+import { job } from "../types";
 import SlideToggle from "react-slide-toggle";
 import zipRecruiterLogo from "../assets/zipRecruiterLogo.png";
 

@@ -1,5 +1,5 @@
 import React, {  } from 'react';
-import { job} from './types';
+import { job} from '../types';
 import JobPosting from './JobPosting';
 interface JobListProps {
   jobs: Array<job>;
