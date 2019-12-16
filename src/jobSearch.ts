@@ -91,7 +91,7 @@ export function useJobSearch(initFields: searchFields): jobSearch {
 
   useEffect(() => {
     // if there are default
-    if (status === "noSearches" && !isObjEmpty(initFields)) {
+    if (status === "noSearches" && (initFields.search || initFields.location)) {
       zipFetch(initFields).then((data: any) => {
         setState({
           ...state,
