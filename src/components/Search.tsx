@@ -1,6 +1,7 @@
 import React from "react";
 import { useJobSearch, searchFields } from "../jobSearch";
 import queryString from "query-string";
+import SlideToggle from "react-slide-toggle";
 import JobList from "./JobList";
 
 /** sets url params without reloading page */
@@ -33,8 +34,10 @@ const statusMessageMap = {
 type SearchProps = {};
 
 const Search: React.FC<React.PropsWithChildren<SearchProps>> = () => {
-  // eslint-disable-next-line no-restricted-globals
-  const defaultFields = queryString.parse(location.search) as unknown as searchFields;
+  const defaultFields = (queryString.parse(
+    // eslint-disable-next-line no-restricted-globals
+    location.search
+  ) as unknown) as searchFields;
   const { jobList, userFields, onFieldChange, onSearch, status } = useJobSearch(
     defaultFields
   );
@@ -44,45 +47,57 @@ const Search: React.FC<React.PropsWithChildren<SearchProps>> = () => {
     setQueryParams(userFields);
     onSearch();
   };
-  console.log('salary: ', userFields.refine_by_salary);
-
 
   return (
-    <div className="search-container">
-      {statusMessageMap[status]()}
-      <form id="search-form" onSubmit={onSubmit}>
-        <label className="location-label">Location</label>
-        <input
-          name="location"
-          type="text"
-          value={userFields.location}
-          onChange={e => onFieldChange(e.target.value, "location")}
-          placeholder={defaultFields.location}
-        />
-        <label className="keywords-label">Keywords</label>
-        <input
-          name="keywords"
-          value={userFields.search}
-          onChange={e => onFieldChange(e.target.value, "search")}
-          placeholder={defaultFields.search}
-        />
-        <label className="min-salary-label">Mininum Salary</label>
-        <input
-          name="min-salary"
-          type="number"
-          value={userFields ? userFields.refine_by_salary.toString() : ''}
-          placeholder={"80000"}
-          onChange={e => {
-            e.preventDefault();
-            onFieldChange(Number(e.target.value), "refine_by_salary")
-          }}
-        />
-        <div className="button-row">
-          <input type="submit" />
+    <SlideToggle
+      collapsed={true}
+      render={({ toggle, setCollapsibleElement }: any) => (
+        <div className="search-container">
+          {statusMessageMap[status]()}
+          <form id="search-form" onSubmit={onSubmit}>
+            <label className="location-label">Location</label>
+            <label className="keywords-label">Keywords</label>
+            <label className="min-salary-label">Mininum Salary</label>
+            <input
+              name="location"
+              type="text"
+              value={userFields.location}
+              onChange={e => onFieldChange(e.target.value, "location")}
+              placeholder={defaultFields.location}
+            />
+            <input
+              name="keywords"
+              value={userFields.search}
+              onChange={e => onFieldChange(e.target.value, "search")}
+              placeholder={defaultFields.search}
+            />
+            <input
+              name="min-salary"
+              type="number"
+              value={userFields ? userFields.refine_by_salary.toString() : ""}
+              onChange={e => {
+                e.preventDefault();
+                onFieldChange(Number(e.target.value), "refine_by_salary");
+              }}
+            />
+            <div className="advanced-options" ref={setCollapsibleElement}>
+              Advanced Options!
+            </div>
+            <div className="button-row">
+              <input type="submit" />
+              <button
+                type="button"
+                className="advanced-options-btn"
+                onClick={toggle}
+              >
+                Toggle Advanced Options
+              </button>
+            </div>
+          </form>
+          <JobList jobs={jobList} />
         </div>
-      </form>
-      <JobList jobs={jobList} />
-    </div>
+      )}
+    />
   );
 };
 

@@ -50,22 +50,30 @@
   display: grid;
   width: 100%;
   grid-template-areas:
-    "location-label keywords-label ."
-    "location-input keywords-input submit";
+    "keywords-label location-label min-salary-label"
+    "keywords-input location-input min-salary-input"
+    "advanced-options advanced-options  advanced-options"
+    "submit submit submit";
 
-  grid-template-columns: auto auto min-content;
-  width: 100%;
+  grid-template-columns: 1fr 2fr;
+  column-gap: 1em;
+
+  // grid-template-columns: auto auto min-content;
   input[name="location"] {
     grid-area: location-input;
-    height: 2vh;
   }
 
   input[name="keywords"] {
     grid-area: keywords-input;
   }
 
+  input[name="min-salary"] {
+    grid-area: min-salary-input;
+  }
+
   label {
     color: $color5;
+    text-align: center;
   }
 
   .location-label {
@@ -76,11 +84,24 @@
     grid-area: keywords-label;
   }
 
+  .min-salary-label {
+    grid-area: min-salary-label;
+  }
+
   .button-row {
     grid-area: submit;
     display: flex;
     height: 100%;
-    align-content: center;
+    width: 100%;
+    justify-content: center;
+
+    button {
+      margin-left: .5em;
+    }
+  }
+
+  .advanced-options {
+    grid-area: advanced-options;
   }
 }
 

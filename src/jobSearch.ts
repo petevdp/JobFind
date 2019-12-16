@@ -37,15 +37,23 @@ export interface jobSearch {
   status: searchStatus;
 }
 
+/** if query params or the user hasn't
+ * provided fields they're replaced by ones included here */
+const baseFields: searchFields = {
+  refine_by_salary: 200000
+}
+
 /** update search fields, make searches, and get output */
 export function useJobSearch(defaultFields: searchFields): jobSearch {
   const [state, setState] = useState({
-    userFields: {...defaultFields, refine_by_salary: 100},
+    userFields: {...baseFields, ...defaultFields},
     jobList: [],
     status: "noSearches",
     setUrlParams: false
   } as searchState);
   const { userFields: fields, jobList, status } = state;
+  console.log('salary: ', fields.refine_by_salary);
+
 
   function onFieldChange(value: any, fieldName: fieldName) {
     setState({
