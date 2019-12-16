@@ -1,12 +1,7 @@
 import React from "react";
 import "fomantic-ui-css/semantic.css";
-import cloneDeep from 'lodash/cloneDeep';
-import {
-  Container,
-  Form,
-  Input,
-  Button,
-} from "semantic-ui-react";
+import cloneDeep from "lodash/cloneDeep";
+import { Container, Form, Input, Button, Loader } from "semantic-ui-react";
 import { useJobSearch, searchFields } from "../jobSearch";
 import queryString from "query-string";
 import JobList from "./JobList";
@@ -28,7 +23,7 @@ function setQueryParams(fields: searchFields) {
       window.location.host +
       window.location.pathname +
       "?" +
-      queryString.stringify(fieldsToSubmit, {skipNull: true});
+      queryString.stringify(fieldsToSubmit, { skipNull: true });
     window.history.pushState({ path: newurl }, "", newurl);
   }
 }
@@ -43,8 +38,10 @@ const statusMessageMap = {
       No jobs matching these search terms found!
     </span>
   ),
-  loading: () => <span>Loading...</span>,
-  success: () => <span>Jobs found!</span>
+  loading: () => (
+    <Loader size="small" active inline />
+  ),
+  success: () => <span>Jobs found</span>
 };
 
 type SearchProps = {};
