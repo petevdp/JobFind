@@ -41,7 +41,6 @@ const reduce: React.Reducer<sortState, activeOption> = (
   if (btnClicked === prevState.activeOption) {
     const toggle = (["min", "max"].find(v => v !== prevState.toggle) ||
       "min") as optionToggle;
-    console.log(toggle);
 
     return { ...prevState, toggle };
   }
@@ -59,8 +58,6 @@ const JobList: React.FC<React.PropsWithChildren<JobListProps>> = ({
     toggle: "min"
   });
 
-  console.log("times");
-
   const jobElements = jobList
     .sort((a, b) =>
       ((sortMap[activeOption] as unknown) as optionSort)(a, b, toggle)
@@ -77,7 +74,6 @@ const JobList: React.FC<React.PropsWithChildren<JobListProps>> = ({
   } else if (toggle === "max") {
     arrow = upArrow;
   } else {
-
   }
 
   return (

@@ -1,43 +1,43 @@
 # Design
+
 mvp: make one ip request based on user input, and return the results as a table?
 
 ## Tasks
+
 ### DONE
-* get basic api request working
-* display posting from search
-* basic styling for postings
-* form styling (pass 1)
-* nav styling (pass 1)
-* add link to full posting
-* add salary range to expanded job posting
-* format salary
-* better styling for job postings
-* update query params when new search is performed
-* load search defined by query params on page load
+
+- get basic api request working
+- display posting from search
+- basic styling for postings
+- form styling (pass 1)
+- nav styling (pass 1)
+- add link to full posting
+- add salary range to expanded job posting
+- format salary
+- better styling for job postings
+- update query params when new search is performed
+- load search defined by query params on page load
+- update readme
 
 ### TODO
-* update readme
-* update "description" to more accuratlly reflect contents
+
+- update "description" to more accurately reflect contents
+- fix the godawful form styling
 
 ### MVP
 
-* the user should be able to
-  * search for jobs based on keywords and their particular location
-  * see those jobs displayed first, get basic info, and visit the full posting via link
-
-* page should be mobile-friendly and generally have decent UX
-
-* deploy to github pages
-
-
+- the user should be able to
+  - DONE search for jobs based on keywords and a location
+  - DONE see those jobs displayed first, get basic info, and visit the full posting via link
+- DONE deploy to github pages
 
 ### STRECH
-* set default form values based on query params on page load
-* unit testing
-* advanced search features(needs more definition)
-* incremental search by getting all postings returned based on location
-* use location api to filter postings to a particular area by default
 
+- DONE set default form values based on query params on page load
+- DONE advanced search features
+- unit testing
+- incremental search with procured list of city names
+- use location api to filter postings to a particular area by default
 
 ### which fields to display
 
@@ -54,7 +54,3 @@ mvp: make one ip request based on user input, and return the results as a table?
   source
 
 I'm going to rely entirely on the api doing the sorting and just provide a bunch of search functionality based on it. This means no incremental searching unfortunately, but I could get a list of locations/keywords and use that potentially for autocompletion
-
-
-
-

@@ -71,9 +71,7 @@ const Search: React.FC<React.PropsWithChildren<SearchProps>> = () => {
               placeholder={defaultFields.search}
             />
             <div className="advanced-options" ref={setCollapsibleElement}>
-              <h4 className="advance-options-title">
-                Advanced Options
-              </h4>
+              <h4 className="advance-options-title">Advanced Options</h4>
               <label className="min-salary-label">Mininum Salary</label>
               <input
                 name="min-salary"

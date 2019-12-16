@@ -58,8 +58,6 @@ export function useJobSearch(initFields: searchFields): jobSearch {
     setUrlParams: false
   } as searchState);
   const { userFields: fields, jobList, status } = state;
-  console.log('salary: ', fields.refine_by_salary);
-
 
   function onFieldChange(value: any, fieldName: fieldName) {
     setState({
