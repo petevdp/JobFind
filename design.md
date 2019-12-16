@@ -54,8 +54,6 @@ mvp: make one ip request based on user input, and return the results as a table?
   salary
   source
 
-problem * the api will look for keywords in the snippet to potentially determine location. This means sorting by the provided location properties won't help us sort the entries.
-
 I'm going to rely entirely on the api doing the sorting and just provide a bunch of search functionality based on it. This means no incremental searching unfortunately, but I could get a list of locations/keywords and use that potentially for autocompletion
 
 

@@ -1,6 +1,5 @@
-import { useState, useEffect, useCallback } from "react";
-import queryString from 'query-string'
-import isObjEmpty from 'lodash/isEmpty';
+import { useState, useEffect } from "react";
+import isObjEmpty from "lodash/isEmpty";
 import { job } from "./types";
 
 export interface searchFields {
@@ -30,25 +29,28 @@ interface searchState {
 }
 
 export interface jobSearch {
-    onFieldChange: (value: any, fieldName: fieldName) => void
-    onSearch: (fields?: searchFields) => void;
-    userFields: searchFields;
-    jobList: Array<job>;
-    status: searchStatus;
+  onFieldChange: (value: any, fieldName: fieldName) => void;
+  onSearch: (fields?: searchFields) => void;
+  userFields: searchFields;
+  jobList: Array<job>;
+  status: searchStatus;
 }
 
 /** update search fields, make searches, and get output */
 export function useJobSearch(defaultFields: searchFields): jobSearch {
   const [state, setState] = useState({
-    userFields: {location: "", search: ""},
+    userFields: { location: "", search: "" },
     jobList: [],
     status: "noSearches",
-    setUrlParams: false,
+    setUrlParams: false
   } as searchState);
   const { userFields: fields, jobList, status } = state;
 
   function onFieldChange(value: any, fieldName: fieldName) {
-    setState({ ...state, userFields: { ...state.userFields, [fieldName]: value } });
+    setState({
+      ...state,
+      userFields: { ...state.userFields, [fieldName]: value }
+    });
   }
 
   function onSearch() {
@@ -62,7 +64,7 @@ export function useJobSearch(defaultFields: searchFields): jobSearch {
   }
 
   useEffect(() => {
-    if (status === 'noSearches' && !isObjEmpty(defaultFields)) {
+    if (status === "noSearches" && !isObjEmpty(defaultFields)) {
       zipFetch(defaultFields).then((data: any) => {
         setState({
           ...state,
@@ -71,7 +73,7 @@ export function useJobSearch(defaultFields: searchFields): jobSearch {
         });
       });
     }
-  }, [defaultFields, state, status])
+  }, [defaultFields, state, status]);
 
   return {
     onFieldChange,

@@ -1,14 +1,20 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useJobSearch, searchFields } from "../jobSearch";
-import queryString from 'query-string';
+import queryString from "query-string";
 import JobList from "./JobList";
 
 /** sets url params without reloading page */
 function setQueryParams(fields: searchFields) {
   // eslint-disable-next-line no-restricted-globals
   if (history.pushState) {
-      let newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + queryString.stringify(fields)
-      window.history.pushState({path: newurl}, '', newurl);
+    let newurl =
+      window.location.protocol +
+      "//" +
+      window.location.host +
+      window.location.pathname +
+      "?" +
+      queryString.stringify(fields);
+    window.history.pushState({ path: newurl }, "", newurl);
   }
 }
 
@@ -24,22 +30,20 @@ const statusMessageMap = {
   success: () => <h3 className="usage-prompt success">Jobs found!</h3>
 };
 
-type SearchProps = { };
+type SearchProps = {};
 
 const Search: React.FC<React.PropsWithChildren<SearchProps>> = () => {
   // eslint-disable-next-line no-restricted-globals
   const defaultFields = queryString.parse(location.search) as searchFields;
-  const { jobList, userFields, onFieldChange, onSearch, status } = useJobSearch(defaultFields);
+  const { jobList, userFields, onFieldChange, onSearch, status } = useJobSearch(
+    defaultFields
+  );
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setQueryParams(userFields);
     onSearch();
   };
-  console.log('default: ', defaultFields);
-
-
-
 
   return (
     <div className="search-container">
