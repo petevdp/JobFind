@@ -1,6 +1,6 @@
 import React from "react";
 import 'fomantic-ui-css/semantic.css';
-import { Menu, Container, Grid, } from 'semantic-ui-react';
+import { Menu, Container, } from 'semantic-ui-react';
 
 import Search from "./Search";
 

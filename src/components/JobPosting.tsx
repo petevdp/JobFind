@@ -1,8 +1,7 @@
 import React from "react";
 import { job } from "../types";
-import SlideToggle from "react-slide-toggle";
 import zipRecruiterLogo from "../assets/zipRecruiterLogo.png";
-import { Table, Tab, Image } from "semantic-ui-react";
+import { Table, Image } from "semantic-ui-react";
 
 interface JobPostingProps {
   job: job;

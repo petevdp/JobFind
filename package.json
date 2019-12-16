@@ -20,7 +20,6 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-scripts": "3.3.0",
-    "react-slide-toggle": "^0.3.3",
     "semantic-ui-react": "^0.88.2",
     "typescript": "~3.7.2"
   },

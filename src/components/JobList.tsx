@@ -1,9 +1,7 @@
 import React, { useReducer } from "react";
 import { job } from "../types";
 import JobPosting from "./JobPosting";
-import upArrow from "../assets/keyboard_arrow_up-24px.svg";
-import downArrow from "../assets/keyboard_arrow_down-24px.svg";
-import { Table, Button, ButtonProps, Icon } from "semantic-ui-react";
+import { Table, Button, Icon } from "semantic-ui-react";
 interface JobListProps {
   jobList: Array<job>;
 }
@@ -107,14 +105,6 @@ const JobList: React.FC<React.PropsWithChildren<JobListProps>> = ({
       ((sortMap[activeOption] as unknown) as optionSort)(a, b, toggle)
     )
     .map(job => <JobPosting key={job.id} job={job} />);
-
-  let arrow;
-  if (toggle === "min") {
-    arrow = downArrow;
-  } else if (toggle === "max") {
-    arrow = upArrow;
-  } else {
-  }
 
   return (
     <Table>

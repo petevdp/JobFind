@@ -1,17 +1,13 @@
 import React from "react";
 import "fomantic-ui-css/semantic.css";
 import {
-  Menu,
   Container,
   Form,
-  FormTextArea,
-  Label,
   Input,
   Button
 } from "semantic-ui-react";
 import { useJobSearch, searchFields } from "../jobSearch";
 import queryString from "query-string";
-import SlideToggle from "react-slide-toggle";
 import JobList from "./JobList";
 
 /** sets url params without reloading page */
