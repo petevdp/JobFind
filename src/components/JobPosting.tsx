@@ -8,6 +8,7 @@ interface JobPostingProps {
   job: job;
 }
 
+/** Add some commas and a dollar sign to a salary */
 function formatSalary(salaryNum: number) {
   // regex is too hard
   const salary = salaryNum.toString();
@@ -18,7 +19,15 @@ function formatSalary(salaryNum: number) {
     chunks.push(salary.slice(i, i + 3));
   }
 
-  return chunks.join(",");
+  return '$' + chunks.join(",");
+}
+
+/** turn the small 'us' location into a better looking USA */
+function formatLocation(location: string) {
+  if (location === 'us') {
+    return 'USA'
+  }
+  return location;
 }
 
 const JobPosting: React.FC<React.PropsWithChildren<JobPostingProps>> = ({
@@ -45,11 +54,11 @@ const JobPosting: React.FC<React.PropsWithChildren<JobPostingProps>> = ({
       <Table.Cell>
         <span dangerouslySetInnerHTML={{ __html: snippet }} />
       </Table.Cell>
-      <Table.Cell>{location}</Table.Cell>
+      <Table.Cell>{formatLocation(location)}</Table.Cell>
       <Table.Cell>
-        {formatSalary(salary_min_annual)} - {formatSalary(salary_max_annual)}
+        {formatSalary(salary_min_annual)} to {formatSalary(salary_max_annual)}
       </Table.Cell>
-      <Table.Cell>{posted_time_friendly}</Table.Cell>
+      <Table.Cell singleLine>{posted_time_friendly}</Table.Cell>
       <Table.Cell>
         <Image src={zipRecruiterLogo} size="mini" rounded href={url}/>
       </Table.Cell>
