@@ -117,7 +117,7 @@ const JobList: React.FC<React.PropsWithChildren<JobListProps>> = ({
   }
 
   return (
-    <Table padded>
+    <Table>
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell>Title</Table.HeaderCell>
