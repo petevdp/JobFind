@@ -1,10 +1,11 @@
 import React from "react";
 import "fomantic-ui-css/semantic.css";
+import cloneDeep from 'lodash/cloneDeep';
 import {
   Container,
   Form,
   Input,
-  Button
+  Button,
 } from "semantic-ui-react";
 import { useJobSearch, searchFields } from "../jobSearch";
 import queryString from "query-string";
@@ -12,6 +13,13 @@ import JobList from "./JobList";
 
 /** sets url params without reloading page */
 function setQueryParams(fields: searchFields) {
+  const fieldsToSubmit = cloneDeep(fields) as any;
+  for (let key in fieldsToSubmit) {
+    if (!fieldsToSubmit[key] || fieldsToSubmit[key] === "0") {
+      fieldsToSubmit[key] = null;
+    }
+  }
+
   // eslint-disable-next-line no-restricted-globals
   if (history.pushState) {
     let newurl =
@@ -20,21 +28,23 @@ function setQueryParams(fields: searchFields) {
       window.location.host +
       window.location.pathname +
       "?" +
-      queryString.stringify(fields);
+      queryString.stringify(fieldsToSubmit, {skipNull: true});
     window.history.pushState({ path: newurl }, "", newurl);
   }
 }
 
+/** TODO: make this better */
 const statusMessageMap = {
   noSearches: () => (
-    <h3 className="usage-prompt no-searches">Time to look for a job!</h3>
+    <span className="usage-prompt no-searches">Time to look for a job!</span>
   ),
   notFound: () => (
-    <h3 className="usage-prompt not-found">
+    <span className="usage-prompt not-found">
       No jobs matching these search terms found!
-    </h3>
+    </span>
   ),
-  success: () => <h3 className="usage-prompt success">Jobs found!</h3>
+  loading: () => <span>Loading...</span>,
+  success: () => <span>Jobs found!</span>
 };
 
 type SearchProps = {};
@@ -56,7 +66,6 @@ const Search: React.FC<React.PropsWithChildren<SearchProps>> = () => {
 
   return (
     <Container className="search-container">
-      {statusMessageMap[status]()}
       <Form id="search-form" onSubmit={onSubmit}>
         <Form.Group widths="equal">
           <Form.Field lable="Search Terms">
@@ -114,7 +123,10 @@ const Search: React.FC<React.PropsWithChildren<SearchProps>> = () => {
             }}
           />
         </Form.Group>
-        <Form.Field control={Button}>Submit</Form.Field>
+        <div id="submit-row">
+          <Form.Field control={Button}>Submit</Form.Field>
+          {statusMessageMap[status]()}
+        </div>
       </Form>
       <JobList jobList={jobList} />
     </Container>

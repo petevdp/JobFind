@@ -1,6 +1,7 @@
 import React from "react";
+import '../styles/App.scss';
 import 'fomantic-ui-css/semantic.css';
-import { Menu, Container, } from 'semantic-ui-react';
+import { Menu, Container, Header, } from 'semantic-ui-react';
 
 import Search from "./Search";
 
@@ -11,6 +12,7 @@ const App: React.FC = () => {
         <Menu.Item header >JobFind</Menu.Item>
       </Menu>
       <Container>
+        <Header>Find your Dream Job!</Header>
         <Search />
       </Container>
     </div>

@@ -1,29 +1,38 @@
 import { useState, useEffect } from "react";
 import isObjEmpty from "lodash/isEmpty";
-import queryString from 'query-string';
+import queryString from "query-string";
 import { job } from "./types";
+import { setServers } from "dns";
 
 // when adding to this, update fieldNames as well
 export interface searchFields {
-  location?: string;
-  search?: string;
-  refine_by_salary?: number;
+  location?: string | null;
+  search?: string | null;
+  refine_by_salary?: number | null;
   radius_miles?: number;
   days_ago?: number;
 }
 
-type fieldName = "search" | "location" | "refine_by_salary" | 'days_ago' | 'radius_miles';
+type fieldName =
+  | "search"
+  | "location"
+  | "refine_by_salary"
+  | "days_ago"
+  | "radius_miles";
 
 const BASE_API_URL = "https://api.ziprecruiter.com/jobs/v1/";
 
 /** query the zipRecruiter api */
 async function zipFetch(fields: searchFields) {
-  const queryParams = {...fields, api_key: process.env.REACT_APP_ZIP_RECRUITER_API_KEY}
-  const fullUrl = BASE_API_URL + '?' + queryString.stringify(queryParams)
+  const queryParams = {
+    ...fields,
+    api_key: process.env.REACT_APP_ZIP_RECRUITER_API_KEY
+  };
+  const fullUrl = BASE_API_URL + "?" + queryString.stringify(queryParams);
   return (await fetch(fullUrl)).json();
 }
 
-type searchStatus = "noSearches" | "notFound" | "success";
+type searchStatus = "noSearches" | "notFound" | "loading" | "success";
 interface searchState {
   userFields: searchFields;
   jobList: Array<job>;
@@ -44,7 +53,7 @@ export interface jobSearch {
 const baseFields: searchFields = {
   refine_by_salary: 100000,
   days_ago: 100
-}
+};
 
 /**
  * update search fields, make searches, and get output
@@ -52,7 +61,7 @@ const baseFields: searchFields = {
  */
 export function useJobSearch(initFields: searchFields): jobSearch {
   const [state, setState] = useState({
-    userFields: {...baseFields, ...initFields},
+    userFields: { ...baseFields, ...initFields },
     jobList: [],
     status: "noSearches",
     setUrlParams: false
@@ -67,6 +76,10 @@ export function useJobSearch(initFields: searchFields): jobSearch {
   }
 
   function onSearch() {
+    setState({
+      ...state,
+      status: 'loading'
+    });
     zipFetch(fields).then((data: any) => {
       setState({
         ...state,

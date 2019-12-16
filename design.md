@@ -22,7 +22,10 @@ mvp: make one ip request based on user input, and return the results as a table?
 ### TODO
 
 - update "description" to more accurately reflect contents
-- fix the godawful form styling
+- only submit form on page load if certain fields are filled
+- form validation
+- theme
+- loading indicator for form
 
 ### MVP
 
