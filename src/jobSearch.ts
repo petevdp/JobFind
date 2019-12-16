@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
+import queryString from 'query-string'
+import isObjEmpty from 'lodash/isEmpty';
 import { job } from "./types";
 
-interface searchFields {
+export interface searchFields {
   location?: string;
   search?: string;
 }
@@ -21,35 +23,36 @@ async function zipFetch({ location, search }: searchFields) {
 
 type searchStatus = "noSearches" | "notFound" | "success";
 interface searchState {
-  fields: searchFields;
+  userFields: searchFields;
   jobList: Array<job>;
   status: searchStatus;
+  setUrlParams: boolean;
 }
 
 export interface jobSearch {
     onFieldChange: (value: any, fieldName: fieldName) => void
-    onSearch: () => void;
-    fields: searchFields;
+    onSearch: (fields?: searchFields) => void;
+    userFields: searchFields;
     jobList: Array<job>;
     status: searchStatus;
 }
 
 /** update search fields, make searches, and get output */
-export function useJobSearch(): jobSearch {
+export function useJobSearch(defaultFields: searchFields): jobSearch {
   const [state, setState] = useState({
-    fields: {},
+    userFields: {location: "", search: ""},
     jobList: [],
-    status: "noSearches"
+    status: "noSearches",
+    setUrlParams: false,
   } as searchState);
-
-  const { fields, jobList, status } = state;
+  const { userFields: fields, jobList, status } = state;
 
   function onFieldChange(value: any, fieldName: fieldName) {
-    setState({ ...state, fields: { ...state.fields, [fieldName]: value } });
+    setState({ ...state, userFields: { ...state.userFields, [fieldName]: value } });
   }
 
   function onSearch() {
-    zipFetch(state.fields).then((data: any) => {
+    zipFetch(fields).then((data: any) => {
       setState({
         ...state,
         jobList: data.jobs,
@@ -58,10 +61,22 @@ export function useJobSearch(): jobSearch {
     });
   }
 
+  useEffect(() => {
+    if (status === 'noSearches' && !isObjEmpty(defaultFields)) {
+      zipFetch(defaultFields).then((data: any) => {
+        setState({
+          ...state,
+          jobList: data.jobs,
+          status: data.jobs.length > 0 ? "success" : "notFound"
+        });
+      });
+    }
+  }, [defaultFields, state, status])
+
   return {
     onFieldChange,
     onSearch,
-    fields,
+    userFields: fields,
     jobList,
     status
   };

@@ -1,6 +1,16 @@
-import React from "react";
-import { jobSearch } from "../jobSearch";
+import React, { useEffect } from "react";
+import { useJobSearch, searchFields } from "../jobSearch";
+import queryString from 'query-string';
 import JobList from "./JobList";
+
+/** sets url params without reloading page */
+function setQueryParams(fields: searchFields) {
+  // eslint-disable-next-line no-restricted-globals
+  if (history.pushState) {
+      let newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + queryString.stringify(fields)
+      window.history.pushState({path: newurl}, '', newurl);
+  }
+}
 
 const statusMessageMap = {
   noSearches: () => (
@@ -14,21 +24,22 @@ const statusMessageMap = {
   success: () => <h3 className="usage-prompt success">Jobs found!</h3>
 };
 
-type SearchProps = jobSearch;
+type SearchProps = { };
 
-const Search: React.FC<React.PropsWithChildren<SearchProps>> = ({
-  jobList,
-  fields,
-  onFieldChange,
-  onSearch,
-  status
-}: jobSearch) => {
-  // const { jobList, fields, onFieldChange, onSearch, status } = useJobSearch();
+const Search: React.FC<React.PropsWithChildren<SearchProps>> = () => {
+  // eslint-disable-next-line no-restricted-globals
+  const defaultFields = queryString.parse(location.search) as searchFields;
+  const { jobList, userFields, onFieldChange, onSearch, status } = useJobSearch(defaultFields);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setQueryParams(userFields);
     onSearch();
   };
+  console.log('default: ', defaultFields);
+
+
+
 
   return (
     <div className="search-container">
@@ -38,7 +49,7 @@ const Search: React.FC<React.PropsWithChildren<SearchProps>> = ({
         <input
           name="location"
           type="text"
-          value={fields.location}
+          value={userFields.location}
           onChange={e => onFieldChange(e.target.value, "location")}
           placeholder="location"
         />
@@ -46,7 +57,7 @@ const Search: React.FC<React.PropsWithChildren<SearchProps>> = ({
         <input
           name="keywords"
           type="text"
-          value={fields.search}
+          value={userFields.search}
           onChange={e => onFieldChange(e.target.value, "search")}
           placeholder="job keywords"
         />
