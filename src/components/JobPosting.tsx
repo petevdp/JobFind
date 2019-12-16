@@ -7,13 +7,18 @@ interface JobPostingProps {
   job: job;
 }
 
-function formatSalary (salary: number) {
+function formatSalary (salaryNum: number) {
   // regex is too hard
-  const strSalary = salary.toString();
-  const chunks = [];
-  for (let i=0; i < strSalary.length; i += 3) {
-    chunks.push(strSalary.slice(i, i + 3));
+  const salary = salaryNum.toString()
+  console.log('salary: ', salary);
+
+  const leftOver  = salary.length % 3;
+  const chunks = leftOver !== 0 ? [salary.slice(0, leftOver)] : [];
+
+  for (let i=leftOver; i < salary.length; i += 3) {
+     chunks.push(salary.slice(i, i + 3));
   }
+
   return chunks.join(',');
 }
 
