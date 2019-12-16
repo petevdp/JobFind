@@ -2,7 +2,7 @@ import React from "react";
 import { job } from "../types";
 import SlideToggle from "react-slide-toggle";
 import zipRecruiterLogo from "../assets/zipRecruiterLogo.png";
-import { Table } from "semantic-ui-react";
+import { Table, Tab, Image } from "semantic-ui-react";
 
 interface JobPostingProps {
   job: job;
@@ -42,15 +42,22 @@ const JobPosting: React.FC<React.PropsWithChildren<JobPostingProps>> = ({
     <Table.Row className="job-posting">
       <Table.Cell>{name}</Table.Cell>
       <Table.Cell>{hiring_company.name}</Table.Cell>
+      <Table.Cell>
+        <span dangerouslySetInnerHTML={{ __html: snippet }} />
+      </Table.Cell>
       <Table.Cell>{location}</Table.Cell>
-      <Table.Cell>{formatSalary(salary_min_annual)} - {formatSalary(salary_max_annual)}</Table.Cell>
+      <Table.Cell>
+        {formatSalary(salary_min_annual)} - {formatSalary(salary_max_annual)}
+      </Table.Cell>
       <Table.Cell>{posted_time_friendly}</Table.Cell>
+      <Table.Cell>
+        <Image src={zipRecruiterLogo} size="mini" rounded href={url}/>
+      </Table.Cell>
       {/* <span className="hiring-company">{hiring_company.name}</span>
       <span className="location">{location}</span>
       <span className="posted-time">{posted_time_friendly}</span>
       <div className="url-container">
         <a className="url" href={url} onClick={onUrlClick}>
-          <img src={zipRecruiterLogo} alt="url" width={30} height={30} />
         </a>
       </div>
       <div className="collapsible">

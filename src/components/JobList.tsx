@@ -79,9 +79,11 @@ const JobList: React.FC<React.PropsWithChildren<JobListProps>> = ({
         <Table.Row>
           <Table.HeaderCell>Title</Table.HeaderCell>
           <Table.HeaderCell>Company</Table.HeaderCell>
+          <Table.HeaderCell>Snippet From Posting</Table.HeaderCell>
           <Table.HeaderCell>Location</Table.HeaderCell>
           <Table.HeaderCell>Salary</Table.HeaderCell>
           <Table.HeaderCell>Days Ago</Table.HeaderCell>
+          <Table.HeaderCell>Link</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
       <Table.Body>{jobElements}</Table.Body>

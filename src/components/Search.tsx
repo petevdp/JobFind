@@ -59,69 +59,69 @@ const Search: React.FC<React.PropsWithChildren<SearchProps>> = () => {
   };
 
   return (
-    <SlideToggle
-      collapsed={true}
-      render={({ toggle, setCollapsibleElement }: any) => (
-        <Container className="search-container">
-          {statusMessageMap[status]()}
-          <Form id="search-form" onSubmit={onSubmit}>
-            <Form.Field lable="Search Terms">
-              <label className="keywords-label">Keywords</label>
-              <Form.Input
-                name="keywords"
-                value={userFields.search}
-                onChange={e => onFieldChange(e.target.value, "search")}
-                placeholder={defaultFields.search}
-              />
-            </Form.Field>
-            <Form.Field
-              label="Location"
-              control={Input}
-              onChange={(_: any, { value }: any) =>
-                onFieldChange(value, "location")
-              }
-              name="location"
+    <Container className="search-container">
+      {statusMessageMap[status]()}
+      <Form id="search-form" onSubmit={onSubmit}>
+        <Form.Group widths="equal">
+          <Form.Field lable="Search Terms">
+            <label className="keywords-label">Keywords</label>
+            <Form.Input
+              name="keywords"
+              value={userFields.search}
+              onChange={e => onFieldChange(e.target.value, "search")}
+              placeholder={defaultFields.search}
             />
-            <Form.Field
-              label="Minimum Salary"
-              control={Input}
-              name="min-salary"
-              type="number"
-              value={userFields.refine_by_salary}
-              placeholder={defaultFields.refine_by_salary}
-              onChange={(e: any, { value }: any) => {
-                e.preventDefault();
-                onFieldChange(Number(e.target.value), "refine_by_salary");
-              }}
-            />
-            <Form.Field
-              label="Radius (Miles)"
-              control={Input}
-              name="radius"
-              type="number"
-              value={userFields.radius_miles}
-              onChange={(e: any, { value }: any) => {
-                e.preventDefault();
-                onFieldChange(Number(e.target.value), "radius_miles");
-              }}
-            />
-            <Form.Field
-              label="Days Ago"
-              control={Input}
-              name="days-ago"
-              type="number"
-              value={userFields.days_ago}
-              onChange={(e: any, { value }: any) => {
-                e.preventDefault();
-                onFieldChange(Number(e.target.value), "days_ago");
-              }}
-            />
-            <Form.Field control={Button}>Submit</Form.Field>
-          </Form>
-          <JobList jobList={jobList} />
-        </Container>
-      )}
-    />
+          </Form.Field>
+          <Form.Field
+            label="Location"
+            value={userFields.location}
+            control={Input}
+            onChange={(_: any, { value }: any) =>
+              onFieldChange(value, "location")
+            }
+            name="location"
+          />
+        </Form.Group>
+        <Form.Group widths="equal">
+          <Form.Field
+            label="Minimum Salary"
+            control={Input}
+            name="min-salary"
+            type="number"
+            value={userFields.refine_by_salary}
+            placeholder={defaultFields.refine_by_salary}
+            onChange={(e: any, { value }: any) => {
+              e.preventDefault();
+              onFieldChange(Number(e.target.value), "refine_by_salary");
+            }}
+          />
+          <Form.Field
+            label="Radius (Miles)"
+            control={Input}
+            name="radius"
+            type="number"
+            value={userFields.radius_miles}
+            onChange={(e: any, { value }: any) => {
+              e.preventDefault();
+              onFieldChange(Number(e.target.value), "radius_miles");
+            }}
+          />
+          <Form.Field
+            label="Days Ago"
+            control={Input}
+            name="days-ago"
+            type="number"
+            value={userFields.days_ago}
+            onChange={(e: any, { value }: any) => {
+              e.preventDefault();
+              onFieldChange(Number(e.target.value), "days_ago");
+            }}
+          />
+        </Form.Group>
+        <Form.Field control={Button}>Submit</Form.Field>
+      </Form>
+      <JobList jobList={jobList} />
+    </Container>
   );
 };
 
