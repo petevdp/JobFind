@@ -14,7 +14,6 @@ mvp: make one ip request based on user input, and return the results as a table?
 * better styling for job postings
 * update query params when new search is performed
 * load search defined by query params on page load
-  * NOTE: not sure what the best option is to deal with the controlled vs uncontrolled issues with react, so currently forms are left blank
 
 ### TODO
 * update readme

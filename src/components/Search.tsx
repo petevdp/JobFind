@@ -55,7 +55,7 @@ const Search: React.FC<React.PropsWithChildren<SearchProps>> = () => {
           type="text"
           value={userFields.location}
           onChange={e => onFieldChange(e.target.value, "location")}
-          placeholder="location"
+          placeholder={defaultFields.location}
         />
         <label className="keywords-label">Keywords</label>
         <input
@@ -63,7 +63,7 @@ const Search: React.FC<React.PropsWithChildren<SearchProps>> = () => {
           type="text"
           value={userFields.search}
           onChange={e => onFieldChange(e.target.value, "search")}
-          placeholder="job keywords"
+          placeholder={defaultFields.search}
         />
         <div className="button-row">
           <input type="submit" />

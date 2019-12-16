@@ -10,8 +10,6 @@ interface JobPostingProps {
 function formatSalary (salaryNum: number) {
   // regex is too hard
   const salary = salaryNum.toString()
-  console.log('salary: ', salary);
-
   const leftOver  = salary.length % 3;
   const chunks = leftOver !== 0 ? [salary.slice(0, leftOver)] : [];
 

@@ -39,7 +39,7 @@ export interface jobSearch {
 /** update search fields, make searches, and get output */
 export function useJobSearch(defaultFields: searchFields): jobSearch {
   const [state, setState] = useState({
-    userFields: { location: "", search: "" },
+    userFields: defaultFields,
     jobList: [],
     status: "noSearches",
     setUrlParams: false
