@@ -1,22 +1,24 @@
 {
   "files": {
-    "main.css": "/JobFind/static/css/main.ccca2896.chunk.css",
-    "main.js": "/JobFind/static/js/main.e835fafa.chunk.js",
-    "main.js.map": "/JobFind/static/js/main.e835fafa.chunk.js.map",
+    "main.css": "/JobFind/static/css/main.27b7b040.chunk.css",
+    "main.js": "/JobFind/static/js/main.b59e7b1e.chunk.js",
+    "main.js.map": "/JobFind/static/js/main.b59e7b1e.chunk.js.map",
     "runtime-main.js": "/JobFind/static/js/runtime-main.c6d57f4d.js",
     "runtime-main.js.map": "/JobFind/static/js/runtime-main.c6d57f4d.js.map",
-    "static/js/2.3a096142.chunk.js": "/JobFind/static/js/2.3a096142.chunk.js",
-    "static/js/2.3a096142.chunk.js.map": "/JobFind/static/js/2.3a096142.chunk.js.map",
+    "static/js/2.0ccf4f33.chunk.js": "/JobFind/static/js/2.0ccf4f33.chunk.js",
+    "static/js/2.0ccf4f33.chunk.js.map": "/JobFind/static/js/2.0ccf4f33.chunk.js.map",
     "index.html": "/JobFind/index.html",
-    "precache-manifest.1babca3660189207e47951e84cfe7733.js": "/JobFind/precache-manifest.1babca3660189207e47951e84cfe7733.js",
+    "precache-manifest.5e8e5f4497e44166753b1af54cff88c1.js": "/JobFind/precache-manifest.5e8e5f4497e44166753b1af54cff88c1.js",
     "service-worker.js": "/JobFind/service-worker.js",
-    "static/css/main.ccca2896.chunk.css.map": "/JobFind/static/css/main.ccca2896.chunk.css.map",
-    "static/js/2.3a096142.chunk.js.LICENSE": "/JobFind/static/js/2.3a096142.chunk.js.LICENSE"
+    "static/css/main.27b7b040.chunk.css.map": "/JobFind/static/css/main.27b7b040.chunk.css.map",
+    "static/js/2.0ccf4f33.chunk.js.LICENSE": "/JobFind/static/js/2.0ccf4f33.chunk.js.LICENSE",
+    "static/media/keyboard_arrow_down-24px.svg": "/JobFind/static/media/keyboard_arrow_down-24px.fa5db082.svg",
+    "static/media/keyboard_arrow_up-24px.svg": "/JobFind/static/media/keyboard_arrow_up-24px.15f1fc39.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.c6d57f4d.js",
-    "static/js/2.3a096142.chunk.js",
-    "static/css/main.ccca2896.chunk.css",
-    "static/js/main.e835fafa.chunk.js"
+    "static/js/2.0ccf4f33.chunk.js",
+    "static/css/main.27b7b040.chunk.css",
+    "static/js/main.b59e7b1e.chunk.js"
   ]
 }
