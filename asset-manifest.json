@@ -1,24 +1,26 @@
 {
   "files": {
-    "main.css": "/JobFind/static/css/main.27b7b040.chunk.css",
-    "main.js": "/JobFind/static/js/main.990c39ba.chunk.js",
-    "main.js.map": "/JobFind/static/js/main.990c39ba.chunk.js.map",
+    "main.css": "/JobFind/static/css/main.8caeaabf.chunk.css",
+    "main.js": "/JobFind/static/js/main.15c4a09c.chunk.js",
+    "main.js.map": "/JobFind/static/js/main.15c4a09c.chunk.js.map",
     "runtime-main.js": "/JobFind/static/js/runtime-main.c6d57f4d.js",
     "runtime-main.js.map": "/JobFind/static/js/runtime-main.c6d57f4d.js.map",
-    "static/js/2.0ccf4f33.chunk.js": "/JobFind/static/js/2.0ccf4f33.chunk.js",
-    "static/js/2.0ccf4f33.chunk.js.map": "/JobFind/static/js/2.0ccf4f33.chunk.js.map",
+    "static/css/2.6dd76f29.chunk.css": "/JobFind/static/css/2.6dd76f29.chunk.css",
+    "static/js/2.12968741.chunk.js": "/JobFind/static/js/2.12968741.chunk.js",
+    "static/js/2.12968741.chunk.js.map": "/JobFind/static/js/2.12968741.chunk.js.map",
     "index.html": "/JobFind/index.html",
-    "precache-manifest.b28fbf441a59f0c092c2572df305e127.js": "/JobFind/precache-manifest.b28fbf441a59f0c092c2572df305e127.js",
+    "precache-manifest.bd313c05d7304350e0079746aa67ae44.js": "/JobFind/precache-manifest.bd313c05d7304350e0079746aa67ae44.js",
     "service-worker.js": "/JobFind/service-worker.js",
-    "static/css/main.27b7b040.chunk.css.map": "/JobFind/static/css/main.27b7b040.chunk.css.map",
-    "static/js/2.0ccf4f33.chunk.js.LICENSE": "/JobFind/static/js/2.0ccf4f33.chunk.js.LICENSE",
-    "static/media/keyboard_arrow_down-24px.svg": "/JobFind/static/media/keyboard_arrow_down-24px.fa5db082.svg",
-    "static/media/keyboard_arrow_up-24px.svg": "/JobFind/static/media/keyboard_arrow_up-24px.15f1fc39.svg"
+    "static/css/2.6dd76f29.chunk.css.map": "/JobFind/static/css/2.6dd76f29.chunk.css.map",
+    "static/css/main.8caeaabf.chunk.css.map": "/JobFind/static/css/main.8caeaabf.chunk.css.map",
+    "static/js/2.12968741.chunk.js.LICENSE": "/JobFind/static/js/2.12968741.chunk.js.LICENSE",
+    "static/media/semantic.css": "/JobFind/static/media/outline-icons.f5f2566b.woff2"
   },
   "entrypoints": [
     "static/js/runtime-main.c6d57f4d.js",
-    "static/js/2.0ccf4f33.chunk.js",
-    "static/css/main.27b7b040.chunk.css",
-    "static/js/main.990c39ba.chunk.js"
+    "static/css/2.6dd76f29.chunk.css",
+    "static/js/2.12968741.chunk.js",
+    "static/css/main.8caeaabf.chunk.css",
+    "static/js/main.15c4a09c.chunk.js"
   ]
 }

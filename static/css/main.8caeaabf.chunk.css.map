@@ -1,0 +1,1 @@
+{"version":3,"sources":["App.scss"],"names":[],"mappings":"AAAA,YACE,YAAa,CACb,kBAAmB,CAFrB,iBAKI,eAAiB,CALrB,mBASI,eAAgB,CAChB,iBAAmB","file":"main.8caeaabf.chunk.css","sourcesContent":["#submit-row {\n  display: flex;\n  align-items: center;\n\n  span {\n    font-weight: bold;\n  }\n\n  button {\n    margin-top: 11px;\n    margin-right: 0.7em;\n  }\n}\n"]}
