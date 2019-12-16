@@ -67,9 +67,6 @@
     grid-area: keywords-input;
   }
 
-  input[name="min-salary"] {
-    grid-area: min-salary-input;
-  }
 
   label {
     color: $color5;
@@ -100,9 +97,45 @@
     }
   }
 
-  .advanced-options {
-    grid-area: advanced-options;
+}
+
+.advanced-options {
+  grid-area: advanced-options;
+  display: grid;
+  grid-template-areas:
+    "title title"
+    "min-salary-label min-salary-input"
+    "days-ago-label days-ago-input"
+    "radius-label radius-input";
+  column-count: 2;
+  grid-template-columns: auto auto;
+
+  .advanced-options-title {
+    grid-area: title
   }
+
+  .min-salary-label {
+    grid-area: min-salary-label
+  }
+  .days-ago-label {
+    grid-area: days-ago-label
+  }
+  .radius-label {
+    grid-area: radius-label
+  }
+
+  input[name="min-salary"] {
+    grid-area: min-salary-input;
+  }
+
+  input[name="days-ago"] {
+    grid-area: days-ago-input;
+  }
+
+  input[name="radius"] {
+    grid-area: radius-input;
+  }
+
 }
 
 #job-list {

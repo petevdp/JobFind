@@ -85,7 +85,7 @@ const Search: React.FC<React.PropsWithChildren<SearchProps>> = () => {
                   onFieldChange(Number(e.target.value), "refine_by_salary");
                 }}
               />
-              <label className="min-salary-label">Radius (Miles)</label>
+              <label className="radius-label">Radius (Miles)</label>
               <input
                 name="radius"
                 type="number"
@@ -97,7 +97,7 @@ const Search: React.FC<React.PropsWithChildren<SearchProps>> = () => {
               />
               <label className="days-ago-label">Days Ago</label>
               <input
-                name="radius"
+                name="days-ago"
                 type="number"
                 value={userFields.days_ago}
                 onChange={e => {
