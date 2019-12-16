@@ -50,7 +50,7 @@ const Search: React.FC<React.PropsWithChildren<SearchProps>> = () => {
 
   return (
     <SlideToggle
-      collapsed={false} // TEMPORARY SHOULD BE TRUE
+      collapsed={true}
       render={({ toggle, setCollapsibleElement }: any) => (
         <div className="search-container">
           {statusMessageMap[status]()}
