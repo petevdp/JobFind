@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "649ce03952778e351443a09cd0a123d3",
+    "revision": "94593d94d8946889119c12e9851e2c6a",
     "url": "/JobFind/index.html"
   },
   {
-    "revision": "8a773d48e5b332e2579f",
+    "revision": "66fa13965dfb3c64af19",
     "url": "/JobFind/static/css/2.6dd76f29.chunk.css"
   },
   {
-    "revision": "fa9c4638dce3d3cc3404",
+    "revision": "7a3487f83c1c662e10f2",
     "url": "/JobFind/static/css/main.8caeaabf.chunk.css"
   },
   {
-    "revision": "8a773d48e5b332e2579f",
-    "url": "/JobFind/static/js/2.12968741.chunk.js"
+    "revision": "66fa13965dfb3c64af19",
+    "url": "/JobFind/static/js/2.2acbaef8.chunk.js"
   },
   {
     "revision": "3d9880ee0da2a100dc4a6223e0aed39a",
-    "url": "/JobFind/static/js/2.12968741.chunk.js.LICENSE"
+    "url": "/JobFind/static/js/2.2acbaef8.chunk.js.LICENSE"
   },
   {
-    "revision": "fa9c4638dce3d3cc3404",
-    "url": "/JobFind/static/js/main.15c4a09c.chunk.js"
+    "revision": "7a3487f83c1c662e10f2",
+    "url": "/JobFind/static/js/main.9ed30b75.chunk.js"
   },
   {
     "revision": "97d5462783865e682c1b",
