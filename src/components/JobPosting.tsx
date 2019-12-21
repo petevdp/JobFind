@@ -7,6 +7,18 @@ interface JobPostingProps {
   job: job;
 }
 
+// right now this type is just used for testing
+export const displayedJobProperties = [
+  "posted_time_friendly",
+  "salary_min_annual",
+  "salary_max_annual",
+  "snippet",
+  "posted_time_friendly",
+  "name",
+  "url",
+  "location",
+];
+
 /** Add some commas and a dollar sign to a salary */
 function formatSalary(salaryNum: number) {
   // regex is too hard
@@ -48,7 +60,7 @@ const JobPosting: React.FC<React.PropsWithChildren<JobPostingProps>> = ({
       <Table.Cell>{name}</Table.Cell>
       <Table.Cell>{hiring_company.name}</Table.Cell>
       <Table.Cell>
-        <span dangerouslySetInnerHTML={{ __html: snippet }} />
+        <span title="job-snippet" dangerouslySetInnerHTML={{ __html: snippet }} />
       </Table.Cell>
       <Table.Cell>{formatLocation(location)}</Table.Cell>
       <Table.Cell>

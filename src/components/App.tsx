@@ -8,8 +8,8 @@ import Search from "./Search";
 const App: React.FC = () => {
   return (
     <div className="App">
-      <Menu>
-        <Menu.Item header >JobFind</Menu.Item>
+      <Menu className="top-bar">
+        <Menu.Item header>JobFind</Menu.Item>
       </Menu>
       <Container>
         <Header>Find your Dream Job!</Header>

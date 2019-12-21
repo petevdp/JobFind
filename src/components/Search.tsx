@@ -28,7 +28,6 @@ function setQueryParams(fields: searchFields) {
   }
 }
 
-/** TODO: make this better */
 const statusMessageMap = {
   noSearches: () => (
     <span className="usage-prompt no-searches">Time to look for a job!</span>
