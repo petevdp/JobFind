@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import React from 'react';
-import { job } from '../types';
-import JobPosting, { displayedJobProperties} from './JobPosting';
+import { job } from '../api';
+import JobPosting from './JobPosting';
 
 const testJob: job = {
   "posted_time_friendly": "25 days ago",
@@ -61,5 +61,4 @@ it('displays job salary', () => {
 
   const { getByText } = render(<JobPosting job={localTestJob} />);
   expect(getByText(salaryDisplay)).toBeInTheDocument();
-
 })

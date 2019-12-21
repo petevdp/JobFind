@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import { job } from "../types";
+import { job } from "../api";
 import JobPosting from "./JobPosting";
 import { Table, Button, Icon } from "semantic-ui-react";
 interface JobListProps {

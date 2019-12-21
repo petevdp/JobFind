@@ -1,15 +1,6 @@
 import { useState, useEffect } from "react";
-import queryString from "query-string";
-import { job } from "./types";
-
-// when adding to this, update fieldNames as well
-export interface searchFields {
-  location?: string | null;
-  search?: string | null;
-  refine_by_salary?: number | null;
-  radius_miles?: number;
-  days_ago?: number;
-}
+import { job } from "./api";
+import { zipFetch, searchFields } from './api'
 
 type fieldName =
   | "search"
@@ -18,17 +9,6 @@ type fieldName =
   | "days_ago"
   | "radius_miles";
 
-const BASE_API_URL = "https://api.ziprecruiter.com/jobs/v1/";
-
-/** query the zipRecruiter api */
-async function zipFetch(fields: searchFields) {
-  const queryParams = {
-    ...fields,
-    api_key: process.env.REACT_APP_ZIP_RECRUITER_API_KEY
-  };
-  const fullUrl = BASE_API_URL + "?" + queryString.stringify(queryParams);
-  return (await fetch(fullUrl)).json();
-}
 
 type searchStatus = "noSearches" | "notFound" | "loading" | "success";
 interface searchState {

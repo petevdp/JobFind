@@ -1,5 +1,5 @@
 import React from "react";
-import { job } from "../types";
+import { job } from "../api";
 import zipRecruiterLogo from "../assets/zipRecruiterLogo.png";
 import { Table, Image } from "semantic-ui-react";
 

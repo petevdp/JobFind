@@ -2,7 +2,8 @@ import React from "react";
 import "fomantic-ui-css/semantic.css";
 import cloneDeep from "lodash/cloneDeep";
 import { Container, Form, Input, Button, Loader } from "semantic-ui-react";
-import { useJobSearch, searchFields } from "../jobSearch";
+import { useJobSearch } from "../jobSearch";
+import { searchFields } from '../api';
 import queryString from "query-string";
 import JobList from "./JobList";
 
